@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "S_Character.generated.h"
-
 // added new class
 class USpringArmComponent;
 class UCameraComponent;
@@ -15,6 +14,11 @@ class ROGUELIKE_API AS_Character : public ACharacter
 {
 	GENERATED_BODY()
 
+protected:
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AActor> ProjectileClass;
+
 public:
 	// Sets default values for this character's properties
 	AS_Character();
@@ -22,11 +26,11 @@ public:
 protected:
 
 	//default springArm
-	UPROPERTY(VisibleAnywhere);
+	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArmComp;
 
 	//default camera
-	UPROPERTY(VisibleAnywhere);
+	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
 
 	// Called when the game starts or when spawned
@@ -34,6 +38,8 @@ protected:
 
 	//player movement function
 	void moveForward(float value);
+	void moveRight(float value);
+	void normalShoot();
 
 public:	
 	// Called every frame
